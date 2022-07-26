@@ -1,0 +1,21 @@
+name: 'Wait For Commit'
+description: 'Automatically check if a commit is synchronized on pull requests'
+branding:
+  icon: 'check-circle'
+  color: 'green'
+inputs:
+  github-token:
+    description: 'The GITHUB_TOKEN secret'
+    required: true
+  commit-sha:
+    description: 'The commit sha to check if it exists on PR'
+    required: true
+  max-retries:
+    description: 'The number of maximum retries before failing'
+    required: false
+  pull-request-number:
+    description: '(optional) The ID of a pull request to auto-approve. By default, this action tries to use the pull_request event payload.'
+    required: false
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
